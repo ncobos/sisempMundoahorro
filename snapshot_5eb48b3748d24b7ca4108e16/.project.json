@@ -1,0 +1,13 @@
+{
+    "dataBinding": {
+        "/webapp/view/BajoStockMaster.view.xml": {
+            "entitySet": "/itemsSet"
+        }, 
+        "/webapp/view/BajoStockDetail.view.xml": {
+            "entitySet": "/itemsSet"
+        }, 
+        "/webapp/view/DialogoDePedir.view.xml": {
+            "entitySet": ""
+        } 
+    }
+}

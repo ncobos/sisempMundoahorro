@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="com.sap.build.standard.inventarioBajoStock.controller.DialogoDePedir" xmlns="sap.m">
+    <Dialog contentHeight="auto" contentWidth="auto" horizontalScrolling="true" icon="sap-icon://supplier" showHeader="true" state="Warning" stretch="false" title="Proveedor" type="Standard" verticalScrolling="true">
+        <content>
+            <Input type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+            <Image src="/build/uilibraries/content/static/image-canvas.svg" height="auto" width="50px" visible="true" densityAware="false"/>
+            <ObjectAttribute text="Item Attribute" active="false" visible="true"/>
+        </content>
+        <beginButton/>
+        <buttons>
+            <Button text="OK" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+            <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+        </buttons>
+        <customHeader/>
+        <endButton/>
+        <subHeader/>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,153 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"_version": "1.3.0",
+		"id": "com.sap.build.standard.inventarioBajoStock",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.2.2"
+		},
+		"ach": "ach",
+		"resources": "resources.json",
+		"dataSources": {
+			"local": {
+				"uri": "/here/goes/your/serviceUrl/local/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "sap.ui.ui5-template-plugin.2masterdetail",
+			"version": "1.32.5"
+		}
+	},
+	"sap.fiori": {
+		"_version": "1.1.0",
+		"registrationIds": [],
+		"archeType": "transactional"
+	},
+	"sap.ui": {
+		"_version": "1.3.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"_version": "1.3.0",
+		"rootView": {
+			"viewName": "com.sap.build.standard.inventarioBajoStock.view.App",
+			"type": "XML",
+			"async": false,
+			"id": "app"
+		},
+		"autoPrefixId": true,
+		"dependencies": {
+			"minUI5Version": "1.50.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"": {
+				"dataSource": "local",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": true,
+				"settings": {
+					"loadMetadataAsync": false,
+					"json": true,
+					"bJSON": true,
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Inline",
+					"useBatch": true,
+					"refreshAfterChange": false,
+					"disableHeadRequestForToken": true
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "com.sap.build.standard.inventarioBajoStock.view",
+				"controlId": "idAppControl",
+				"clearTarget": false,
+				"controlAggregation": "detailPages",
+				"async": false,
+				"bypassed": {
+					"target": [
+						"BajoStockDetail",
+						"BajoStockMaster"
+					]
+				}
+			},
+			"targets": {
+				"BajoStockMaster": {
+					"controlAggregation": "masterPages",
+					"viewName": "BajoStockMaster",
+					"viewId": "BajoStockMaster",
+					"viewLevel": 1,
+					"transition": "slide"
+				},
+				"BajoStockDetail": {
+					"controlAggregation": "detailPages",
+					"viewName": "BajoStockDetail",
+					"viewId": "BajoStockDetail",
+					"viewLevel": 2,
+					"transition": "slide"
+				}
+			},
+			"routes": [
+				{
+					"pattern": "BajoStockMaster/:masterContext:",
+					"name": "BajoStockMaster",
+					"target": [
+						"BajoStockDetail",
+						"BajoStockMaster"
+					]
+				},
+				{
+					"pattern": "BajoStockMaster/BajoStockDetail/:context:",
+					"name": "BajoStockDetail",
+					"target": [
+						"BajoStockMaster",
+						"BajoStockDetail"
+					]
+				},
+				{
+					"pattern": "",
+					"name": "default",
+					"target": [
+						"BajoStockDetail",
+						"BajoStockMaster"
+					]
+				}
+			]
+		}
+	}
+}

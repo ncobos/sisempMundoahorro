@@ -1,0 +1,38 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.inventarioHiFi.controller.ListaProductos" xmlns="sap.m">
+    <Page showHeader="true" title="INVENTARIO" showFooter="true" showNavButton="true">
+        <content>
+            <SegmentedButton width="auto" enabled="true" visible="true" class="sapUiSmallMargin">
+                <items>
+                    <SegmentedButtonItem icon="sap-icon://add-product" text="Agregar producto" width="auto" enabled="true" press="_onSegmentedButtonItemPress"/>
+                    <SegmentedButtonItem icon="sap-icon://alert" text="Bajo Stock" width="auto" enabled="true" press="_onSegmentedButtonItemPress1"/>
+                    <SegmentedButtonItem icon="sap-icon://settings" text="Opciones" width="auto" enabled="true"/>
+                </items>
+            </SegmentedButton>
+            <List mode="SingleSelectMaster" width="auto" headerText="Inventario" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" visible="true" class="sapUiSmallMargin sapUiResponsiveContentPadding" itemPress="_onStandardListItemPress" items="{path:'/itemsSet', templateShareable:true}">
+                <infoToolbar>
+                    <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+                        <content>
+                            <Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </content>
+                    </Toolbar>
+                </infoToolbar>
+                <headerToolbar/>
+                <items>
+                    <StandardListItem icon="sap-icon://education" title="{ItemCode}" description="{ItemName}" info="{path: 'QuantityOnStock', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" infoState="None" type="Navigation" selected="false" visible="true" press="_onStandardListItemPress1"/>
+                </items>
+            </List>
+            <ToggleButton pressed="true" text="Button" iconFirst="true" width="109px" enabled="true" visible="true"/>
+        </content>
+        <footer/>
+        <headerContent/>
+        <subHeader>
+            <OverflowToolbar visible="true" enabled="true" width="auto" design="Transparent">
+                <content>
+                    <SearchField placeholder="Código" showSearchButton="true" visible="true" width="350px"/>
+                    <SearchField placeholder="Nombre" showSearchButton="true" visible="true" width="350px"/>
+                </content>
+            </OverflowToolbar>
+        </subHeader>
+        <customHeader/>
+    </Page>
+</mvc:View>
